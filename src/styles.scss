@@ -13,9 +13,8 @@
 // hue. Available color palettes: https://material.io/design/color/
 $scheduler-demo-primary: mat-palette($mat-indigo);
 $scheduler-demo-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $scheduler-demo-warn: mat-palette($mat-red);
+$scheduler-demo-success: mat-palette($mat-green);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -25,6 +24,7 @@ $scheduler-demo-theme: mat-light-theme(
       primary: $scheduler-demo-primary,
       accent: $scheduler-demo-accent,
       warn: $scheduler-demo-warn,
+      custom: $scheduler-demo-success,
     ),
   )
 );
@@ -36,9 +36,24 @@ $scheduler-demo-theme: mat-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+// Custom color library - The native assignment above was giving me grief.
+
+$blue: #28aae1;
+$dark-blue: #127cbb;
+$blue-accent: #e9f6fc;
+$green: #159a67;
+$green-accent: #e7f4ef;
+$red: #b00620;
+$red-accent: #faeef0;
+$black: #1f1f1f;
+$grey-accent: #f4f5f6;
+$charcoal: #606060;
+$white: #ffffff;
+
 html,
 body {
   height: 100%;
+  background: $grey-accent;
 }
 body {
   margin: 0;
@@ -46,4 +61,27 @@ body {
 }
 app-root {
   height: 100%;
+}
+
+// Header & Footer Styles
+
+app-header {
+  mat-toolbar {
+    background: $white !important;
+    padding: 15px !important;
+    @include mat-elevation(2, $charcoal, 0.5);
+    .logo {
+      height: 100%;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
+
+app-footer {
+  padding: 30px;
+  border-top: 1px solid #d3d3d3;
+  text-align: center;
+  color: $charcoal;
 }
