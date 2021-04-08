@@ -13,3 +13,7 @@ NOTE: This version of Angular does not support IE9, IE10 or IE Mobile.
 ## Material Design
 
 This project uses Angular Material custom theme.
+
+## State Management
+
+The NGRX library has been added to this project for state management.
