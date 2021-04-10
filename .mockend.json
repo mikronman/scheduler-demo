@@ -1,0 +1,59 @@
+{
+   "podetails": {
+      "poNumber":450028308,
+      "poDate":"04/15/2021",
+      "poTerms":"Net 60",
+      "poAcknowledge":false,
+      "poConfirm":false,
+      "poVendor":[
+         {
+            "vendorName":"Shipping Company",
+            "partnerId": 12345678,
+            "contactName": "Jane Smith",
+            "contactPhone": "(770) 123-3456",
+            "contactEmail": "jsmith@shippingcompany.com",
+            "streetAddress": "230 Apple Avenue",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipCode": 30328,
+            "country": "USA"
+         },
+         {
+            "vendorName":"Billing Company",
+            "partnerId": 12345678,
+            "contactName": "John Smith",
+            "contactPhone": "(770) 123-3456",
+            "contactEmail": "jsmith@billingcompany.com",
+            "streetAddress": "230 Apple Avenue",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipCode": 30328,
+            "country": "USA"
+         },
+         {
+            "vendorName":"Supply Company",
+            "partnerId": 12345678,
+            "contactName": "James Jones",
+            "contactPhone": "(770) 123-3456",
+            "contactEmail": "jsmith@supplycompany.com",
+            "streetAddress": "230 Apple Avenue",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipCode": 30328,
+            "country": "USA"
+         },
+         {
+            "vendorName":"Selling Company",
+            "partnerId": 12345678,
+            "contactName": "John Doe",
+            "contactPhone": "(770) 123-3456",
+            "contactEmail": "jsmith@sellingCompany.com",
+            "streetAddress": "230 Apple Avenue",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipCode": 30328,
+            "country": "USA"
+         }
+      ]
+   }
+}
