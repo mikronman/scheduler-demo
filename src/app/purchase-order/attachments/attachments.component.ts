@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttachmentsComponent implements OnInit {
 
+  panelOpenState = false;
   constructor() { }
 
   ngOnInit(): void {

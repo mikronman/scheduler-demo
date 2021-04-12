@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderCardComponent } from './order-card.component';
+import { SplitComponent } from './split.component';
 
-describe('OrderCardComponent', () => {
-  let component: OrderCardComponent;
-  let fixture: ComponentFixture<OrderCardComponent>;
+describe('SplitComponent', () => {
+  let component: SplitComponent;
+  let fixture: ComponentFixture<SplitComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderCardComponent ]
+      declarations: [ SplitComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderCardComponent);
+    fixture = TestBed.createComponent(SplitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

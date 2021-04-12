@@ -1,1 +1,169 @@
-<p>order-lines works!</p>
+<section class="order-lines-wrap">
+    <h2>Order Lines</h2>
+    <div fxLayout="row">
+        <div fxLayout="column" fxFlex="70">
+            <p>
+                Use the Accept/Change/Reject toggle at the top of each line card to adjust your order confirmation. Order lines are defaulted to "Accept" status, but can be changed by 
+                selecting "Change" or rejected by selecting "Reject."
+            </p>
+        </div>
+        <div fxLayout="column" fxFlex="30">
+            <span fxLayoutAlign="end">
+                <button class="accept-all" mat-stroked-button>Accept All Lines</button>
+            </span>
+        </div>
+    </div>
+    <div class="card-wrap" *ngFor="let line of orderLines">
+        <mat-card>
+            <mat-card-header>
+                <div fxLayout="row" class="header-row">
+                    <div fxFlex="50">
+                        <h3><b>Line {{ line.lineNumber }}</b>: {{ line.lineTitle }} <mat-icon>content_paste</mat-icon> <mat-icon>attachment</mat-icon></h3>
+                    </div>
+                    <div fxFlex="50">
+                        <span fxLayoutAlign="end">
+                            <button class="add-schedule-btn" mat-stroked-button (click)="openSplitDialog()"><mat-icon class="split-icon"> call_split</mat-icon> Add Schedule</button>
+                            <mat-button-toggle-group #group="matButtonToggleGroup">
+                                <mat-button-toggle class="accept" value="accept">Accept</mat-button-toggle>
+                                <mat-button-toggle class="reject" value="reject">Reject</mat-button-toggle>
+                                <mat-button-toggle class="change" value="change">Change</mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </span>
+                    </div>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="row">
+                    <div class="details-left" fxFlex="30">
+                        <p>
+                            <b>Description:</b> {{ line.description }}<br/>
+                        </p>
+                        <p>
+                            <b>Ship To:</b> {{ line.shipToName }}<br/>
+                            {{ line.shipToAddress }}<br/>
+                            {{ line.shipToCity }} {{ line.shipToProvince }} {{ line.shipToZip }}
+                        </p>
+                        <p>
+                            <b>Supplier Product ID: </b> {{ line.supplierProductId }}
+                        </p>
+                        <p>
+                            <b>UPC Number: </b> {{ line.upcNumber }}
+                        </p>
+                        <p>
+                            <b>Contract Number: </b> {{ line.contractNumber }}
+                        </p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Sales Order Number</mat-label>
+                            <input matInput placeholder="Enter Number" value="{{ line.salesOrderNumber }}">
+                        </mat-form-field>
+                    </div>
+                    <div class="details-right" fxFlex="70">
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <div fxFlex class="detail-sub-container">
+                                <h4>Quantity</h4>
+                                <p>
+                                    <b>Ordered:</b><br/>
+                                    {{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}
+                                </p>
+                                <p *ngIf="group.value === 'accept'">
+                                    <b>Confirmed:</b><br/>
+                                    {{ line.quantity[0].confirmed }} {{ line.quantity[0].unitType }}
+                                </p>
+                                <p class="rejected-text" *ngIf="group.value === 'reject'"><b>Rejected</b></p>
+                                <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
+                                    <mat-label>Confirmed Quantity</mat-label>
+                                    <input matInput placeholder="Enter Number" value="{{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}">
+                                    <mat-hint>Required</mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex class="detail-sub-container">
+                                <h4>Expected Arrival Date</h4>
+                                <p>
+                                    <b>Requested:</b><br/>
+                                    {{ line.arrivalDate[0].requested }}
+                                </p>
+                                <p *ngIf="group.value === 'accept'">
+                                    <b>Confirmed:</b><br/>
+                                    {{ line.arrivalDate[0].confirmed }}
+                                </p>
+                                <p class="rejected-text" *ngIf="group.value === 'reject'"><b>Rejected</b></p>
+                                <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
+                                    <mat-label>Expected Arrival Date</mat-label>
+                                    <input matInput [matDatepicker]="picker2">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                    <mat-hint>Required</mat-hint>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Expected Ship Date</mat-label>
+                                    <input matInput [matDatepicker]="picker1">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex class="detail-sub-container">
+                                <h4>Price</h4>
+                                <p>
+                                    <b>Requested:</b><br/>
+                                    {{ line.price[0].requested[0].pricePerUnit }} {{ line.price[0].requested[0].currency }} / {{ line.price[0].requested[0].unitQuantity }} {{ line.price[0].requested[0].unitType }}
+                                </p>
+                                <p *ngIf="group.value === 'accept'">
+                                    <b>Confirmed:</b><br/>
+                                    {{ line.price[0].confirmed[0].pricePerUnit }} {{ line.price[0].confirmed[0].currency }} / {{ line.price[0].confirmed[0].unitQuantity }} {{ line.price[0].confirmed[0].unitType }}
+                                </p>
+                                <p class="rejected-text" *ngIf="group.value === 'reject'"><b>Rejected</b></p>
+                                <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
+                                    <mat-label>Confirmed Unit Price</mat-label>
+                                    <input matInput placeholder="Enter Number" value="{{ line.price[0].requested[0].pricePerUnit }} {{ line.price[0].requested[0].currency }}">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
+                                    <mat-label>Confirmed Unit Weight</mat-label>
+                                    <input matInput placeholder="Enter Number" value="{{ line.price[0].requested[0].unitQuantity }} {{ line.price[0].requested[0].unitType }}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="alerts">
+                            <div *ngIf="group.value === 'accept'" class="accept-alert"><mat-icon>warning</mat-icon> Once you click submit below, your Buyer will receive your order confirmation.</div>
+                            <div *ngIf="group.value === 'reject'" class="reject-alert"><mat-icon>warning</mat-icon> Once you click submit below, your Buyer will receive your rejection.</div>
+                            <div *ngIf="group.value === 'change'" class="change-alert"><mat-icon>warning</mat-icon> Once you click submit below, your Buyer will receive your change request.</div>
+                        </div>
+                    </div>
+                </div>
+                <mat-accordion class="additional-details" fxLayout="row">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h3>Additional Details</h3>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="row">
+                            <div fxFlex>
+                                <p>
+                                    <b>Product Grade Description:</b><br/>
+                                    {{ line.additionalDetails[0].productGradeDescription }}<br/>
+                                    Specification: {{ line.additionalDetails[0].specification }}<br/>
+                                    Issue: {{ line.additionalDetails[0].issue }}<br/>
+                                    Producer: {{ line.additionalDetails[0].producer }}
+                                </p>
+                            </div>
+                            <div fxFlex>
+                                <p>
+                                    <b>Transport Method:</b> {{ line.additionalDetails[0].transportMethod }}<br/>
+                                    <b>Inco Terms (Location):</b> {{ line.additionalDetails[0].incoTerms }}<br/>
+                                    <b>Unloading Point:</b> {{ line.additionalDetails[0].unloadingPoint }}<br/>
+                                </p>
+                            </div>
+                            <div fxFlex>
+                                <p>
+                                    <b>Ship to Contact:</b> {{ line.additionalDetails[0].shipToContact }}<br/>
+                                    Phone: {{ line.additionalDetails[0].contactPhone }}<br/>
+                                    Fax: {{ line.additionalDetails[0].contactFax }}<br/>
+                                </p>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>

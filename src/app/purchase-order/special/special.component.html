@@ -1,1 +1,18 @@
-<p>special works!</p>
+<section class="special-wrap">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h3>Special Instructions</h3>
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let special of special">
+                <h4>{{ special.title }}</h4>
+                <p>
+                    {{ special.body }}
+                    <br/><br/>
+                </p>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>

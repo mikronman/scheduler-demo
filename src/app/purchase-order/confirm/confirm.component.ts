@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AgreementComponent } from '../agreement/agreement.component';
 
 @Component({
   selector: 'app-confirm',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(AgreementComponent, dialogConfig);
+  }
 
   ngOnInit(): void {
   }
