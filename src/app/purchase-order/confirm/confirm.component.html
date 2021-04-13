@@ -1,6 +1,7 @@
 <section class="confirm-wrap">
-    <mat-checkbox class="example-margin"></mat-checkbox> <span>By clicking here you accept the <a (click)="openDialog()">Elemica Terms and Conditions</a></span>
+    <mat-checkbox class="example-margin"></mat-checkbox> <span>By clicking here you accept the <a (click)="openAgreementDialog()">Elemica Terms and Conditions</a></span>
     <div class="btn-wrap">
-        <button mat-raised-button class="acknowledge">Acknowledge Order Reciept</button><button mat-raised-button class="confirm">Submit Confirmation</button>
+        <button mat-raised-button class="acknowledge" (click)="openAcknowledgeDialog()">Acknowledge Order Reciept</button>
+        <button mat-raised-button class="confirm" (click)="openSubmitDialog()">Submit Confirmation</button>
     </div>
 </section>

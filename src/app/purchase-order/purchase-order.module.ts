@@ -35,6 +35,8 @@ import { CommentsComponent } from "./comments/comments.component";
 import { AgreementComponent } from './agreement/agreement.component';
 import { SplitComponent } from './split/split.component';
 import { ScheduleComponent } from './split/schedule/schedule.component';
+import { AcknowledgeComponent } from './confirm/acknowledge/acknowledge.component';
+import { SubmitComponent } from './confirm/submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { ScheduleComponent } from './split/schedule/schedule.component';
     AgreementComponent,
     SplitComponent,
     ScheduleComponent,
+    AcknowledgeComponent,
+    SubmitComponent,
   ],
   imports: [
     CommonModule,

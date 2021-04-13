@@ -400,11 +400,6 @@ app-confirm {
   }
 }
 app-split {
-  button {
-    span {
-      color:$dark-blue;
-    }
-  }
   p, mat-icon {
     color:$charcoal;
   }
@@ -430,6 +425,13 @@ app-split {
     span {
       margin-right:15px;
       float:left;
+    }
+  }
+}
+.mat-dialog-actions {
+  button {
+    span {
+      color:$dark-blue;
     }
   }
 }
