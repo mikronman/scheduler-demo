@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "scheduler-demo"
+    }
+  },
+  "defaultProject": "scheduler-demo",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

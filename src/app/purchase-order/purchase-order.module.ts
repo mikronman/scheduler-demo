@@ -2,8 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 // NgRx
-import { StoreModule } from "@ngrx/store";
-import { getPoDetailsReducer } from "../store/reducers/po-details.reducer";
 
 // Material Design
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -71,8 +69,7 @@ import { SubmitComponent } from './confirm/submit/submit.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatDialogModule,
-    StoreModule.forRoot({ poDetails: getPoDetailsReducer }),
+    MatDialogModule
   ],
   providers: [  
     MatDatepickerModule, 

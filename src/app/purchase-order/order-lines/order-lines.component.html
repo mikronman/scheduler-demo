@@ -63,11 +63,11 @@
                                 <h4>Quantity</h4>
                                 <p>
                                     <b>Ordered:</b><br/>
-                                    {{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}
+                                    {{ line.quantity.ordered }} {{ line.quantity[0]?.unitType }}
                                 </p>
                                 <p *ngIf="group.value === 'accept'">
                                     <b>Confirmed:</b><br/>
-                                    {{ line.quantity[0].confirmed }} {{ line.quantity[0].unitType }}
+                                    {{ line.quantity[0]?.confirmed }} {{ line.quantity[0]?.unitType }}
                                 </p>
                                 <p class="rejected-text" *ngIf="group.value === 'reject'"><b>Rejected</b></p>
                                 <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
@@ -80,11 +80,11 @@
                                 <h4>Expected Arrival Date</h4>
                                 <p>
                                     <b>Requested:</b><br/>
-                                    {{ line.arrivalDate[0].requested }}
+                                    {{ line.arrivalDate[0]?.requested }}
                                 </p>
                                 <p *ngIf="group.value === 'accept'">
                                     <b>Confirmed:</b><br/>
-                                    {{ line.arrivalDate[0].confirmed }}
+                                    {{ line.arrivalDate[0]?.confirmed }}
                                 </p>
                                 <p class="rejected-text" *ngIf="group.value === 'reject'"><b>Rejected</b></p>
                                 <mat-form-field appearance="outline" *ngIf="group.value === 'change'">
