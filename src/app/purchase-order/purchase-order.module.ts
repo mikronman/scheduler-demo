@@ -2,6 +2,11 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 // NgRx
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { OrderLineReducer } from '../store/reducers/order-line.reducer'
+import { OrderLineEffects } from "../store/effects/order-line.effect";
 
 // Material Design
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -37,6 +42,7 @@ import { ScheduleComponent } from './split/schedule/schedule.component';
 import { AcknowledgeComponent } from './confirm/acknowledge/acknowledge.component';
 import { SubmitComponent } from './confirm/submit/submit.component';
 import { SplitTableComponent } from './order-lines/split-table/split-table.component';
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
@@ -73,7 +79,10 @@ import { SplitTableComponent } from './order-lines/split-table/split-table.compo
     MatNativeDateModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    StoreModule.forRoot({line: OrderLineReducer}, {}),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    EffectsModule.forRoot([OrderLineEffects]),
   ],
   providers: [  
     MatDatepickerModule, 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import OrderLine from '../store/models/order-line.model'
 
 @Injectable ({
     providedIn: 'root'
@@ -10,7 +11,7 @@ export class LineService {
     
     constructor(private httpClient: HttpClient) { }
 
-    public sendGetRequest() {
-        return this.httpClient.get(this.LINE_SERVICE);
+    getLines() {
+        return this.httpClient.get<OrderLine>(this.LINE_SERVICE);
     }
 }

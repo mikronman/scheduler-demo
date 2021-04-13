@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SplitComponent } from '../split/split.component';
 import { LineService } from '../../_services/line.service';
+import OrderLine from '../../store/models/order-line.model';
 
 @Component({
   selector: 'app-order-lines',
@@ -12,7 +13,7 @@ import { LineService } from '../../_services/line.service';
 })
 export class OrderLinesComponent implements OnInit {
 
-  orderLines = [];
+  orderLines: any = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dialog: MatDialog, private lineService: LineService) {}
@@ -27,9 +28,8 @@ export class OrderLinesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.lineService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
+    this.lineService.getLines().pipe(takeUntil(this.destroy$)).subscribe((data: OrderLine) => {
       this.orderLines = data;
-      console.log(this.orderLines);
     })
   }
   ngOnDestroy() {

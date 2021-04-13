@@ -28,8 +28,6 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent],

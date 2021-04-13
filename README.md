@@ -23,3 +23,7 @@ The NGRX library has been added to this project for state management.
 ## Deployment
 
 This app auto-deployes to a dev server on Heroku.
+
+## Data
+
+I am using mockapi.io as a test API endpoint to consume the test data
