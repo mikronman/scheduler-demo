@@ -12,6 +12,6 @@ export class LineService {
     constructor(private httpClient: HttpClient) { }
 
     getLines() {
-        return this.httpClient.get<OrderLine>(this.LINE_SERVICE);
+        return this.httpClient.get<any>(this.LINE_SERVICE);
     }
 }

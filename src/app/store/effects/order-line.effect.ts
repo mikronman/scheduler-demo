@@ -15,17 +15,17 @@ export class OrderLineEffects {
         private store: Store,
         private lineService: LineService) { }
 
-    //  getOrderLines$ = createEffect(() => this.actions$.pipe(
-    //     ofType<GetLineAction>(OrderLineActionTypes.GET_LINE),
-    //         mergeMap(
-    //             () => this.lineService.getLines()
-    //             .pipe(
-    //                 map(data => {
-    //                     return new GetLineSuccessAction(data)
-    //                 }),
-    //                 catchError(error => of(new GetLineFailAction(error)))
-    //             )
-    //         )
-    //     )
-    // )
+     getOrderLines$ = createEffect(() => this.actions$.pipe(
+        ofType<GetLineAction>(OrderLineActionTypes.GET_LINE),
+            mergeMap(
+                () => this.lineService.getLines()
+                .pipe(
+                    map(data => {
+                        return new GetLineSuccessAction(data)
+                    }),
+                    catchError(error => of(new GetLineFailAction(error)))
+                )
+            )
+        )
+    )
 }

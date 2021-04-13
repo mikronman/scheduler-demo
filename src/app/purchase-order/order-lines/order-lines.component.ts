@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SplitComponent } from '../split/split.component';
 import { LineService } from '../../_services/line.service';
 import OrderLine from '../../store/models/order-line.model';
+import { Store } from '@ngrx/store';
+import AppState from '../../store/models/app-state.model';
+import { GetLineAction } from 'src/app/store/actions/order-line.action';
 
 @Component({
   selector: 'app-order-lines',
@@ -13,10 +16,14 @@ import OrderLine from '../../store/models/order-line.model';
 })
 export class OrderLinesComponent implements OnInit {
 
-  orderLines: any = [];
+  orderLines: OrderLine;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private dialog: MatDialog, private lineService: LineService) {}
+  lines$: Observable<OrderLine[]>;
+  loading$: Observable<Boolean>;
+  error$: Observable<Error>;
+
+  constructor(private dialog: MatDialog, private lineService: LineService, private store: Store<AppState>) {}
 
   openSplitDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -31,6 +38,9 @@ export class OrderLinesComponent implements OnInit {
     this.lineService.getLines().pipe(takeUntil(this.destroy$)).subscribe((data: OrderLine) => {
       this.orderLines = data;
     })
+    // this.lines$ = this.store.select(store => store.line.orderLines);
+    // this.error$ = this.store.select(store => store.line.error);
+    // this.store.dispatch(new GetLineAction());
   }
   ngOnDestroy() {
     this.destroy$.next(true);
