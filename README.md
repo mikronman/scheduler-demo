@@ -14,9 +14,12 @@ NOTE: This version of Angular does not support IE9, IE10 or IE Mobile.
 
 This project uses Angular Material custom theme.
 
-- The header and footer components use material toolbar.
 - The layout uses the flex layout module.
 
 ## State Management
 
 The NGRX library has been added to this project for state management.
+
+## Deployment
+
+This app auto-deployes to a dev server on Heroku.
