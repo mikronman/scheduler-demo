@@ -1,0 +1,30 @@
+<section class="split-table"> 
+    <div fxLayout="row">
+        <div fxFlex>
+            <h4>Schedules (Total Quantity: {{ total }} {{ unit }})</h4>
+        </div>
+        <div fxFlex fxLayoutAlign="end">
+            <mat-icon (click)="openSplitDialog()">edit</mat-icon>
+        </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="schedule">
+            <th mat-header-cell *matHeaderCellDef> Schedule </th>
+            <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
+        </ng-container>
+        <ng-container matColumnDef="confirmedQuantity">
+            <th mat-header-cell *matHeaderCellDef> Confirmed Quantity </th>
+            <td mat-cell *matCellDef="let element"> {{element.confirmedQuantity}} </td>
+        </ng-container>
+        <ng-container matColumnDef="expectedArrivalDate">
+            <th mat-header-cell *matHeaderCellDef> Expected Arrival Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.expectedArrivalDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="expectedShipDate">
+            <th mat-header-cell *matHeaderCellDef> Expected Ship Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.expectedShipDate}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</section>

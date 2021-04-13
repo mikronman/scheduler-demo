@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 
 // Componenents
 import { PurchaseOrderRoutingModule } from "./purchase-order-routing.module";
@@ -35,6 +36,7 @@ import { SplitComponent } from './split/split.component';
 import { ScheduleComponent } from './split/schedule/schedule.component';
 import { AcknowledgeComponent } from './confirm/acknowledge/acknowledge.component';
 import { SubmitComponent } from './confirm/submit/submit.component';
+import { SplitTableComponent } from './order-lines/split-table/split-table.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { SubmitComponent } from './confirm/submit/submit.component';
     ScheduleComponent,
     AcknowledgeComponent,
     SubmitComponent,
+    SplitTableComponent,
   ],
   imports: [
     CommonModule,
@@ -69,7 +72,8 @@ import { SubmitComponent } from './confirm/submit/submit.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [  
     MatDatepickerModule, 

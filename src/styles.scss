@@ -435,3 +435,22 @@ app-split {
     }
   }
 }
+app-split-table {
+  mat-icon {
+    color:$blue;
+    cursor:pointer;
+  }
+  .split-table {
+    margin-top:25px;
+    width:100%;
+    float:left;
+    table.mat-table {
+      @include mat-elevation(2, $charcoal, 0.5);
+      width:100%!important;
+      tr.mat-header-row {
+        height:36px!important;
+        background:$blue-accent;
+      }
+    }
+  }
+}
