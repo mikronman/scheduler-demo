@@ -16,6 +16,8 @@ const SPLIT_DATA: SplitTable[] = [
 })
 export class SplitTableComponent implements OnInit {
 
+
+
   total = 21000;
   unit = "KGM";
   displayedColumns: string[] = ['schedule', 'confirmedQuantity', 'expectedArrivalDate', 'expectedShipDate'];
@@ -33,7 +35,7 @@ export class SplitTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dataSource);
+    //console.log(this.dataSource);
   }
 
 }

@@ -35,13 +35,17 @@ export class OrderLinesComponent implements OnInit {
       line: this.orderLines[i],
     }
 
-    this.dialog.open(SplitComponent, dialogConfig);
+    const dialogRef = this.dialog.open(SplitComponent, dialogConfig);
+
+    dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
+      this.splitSchedule = data;
+    });
   }
 
   ngOnInit(): void {
     this.lineService.getLines().pipe(takeUntil(this.destroy$)).subscribe((data: OrderLine) => {
       this.orderLines = data;
-      console.log(this.orderLines);
+      //console.log(this.orderLines);
     })
     // this.lines$ = this.store.select(store => store.line.orderLines);
     // this.error$ = this.store.select(store => store.line.error);
@@ -53,3 +57,5 @@ export class OrderLinesComponent implements OnInit {
   }
 
 }
+
+

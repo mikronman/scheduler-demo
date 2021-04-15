@@ -1,23 +1,23 @@
-<section class="po-detail-wrap">
+<section class="po-detail-wrap" *ngFor="let details of poDetails">
   <div fxLayout="row">
     <div fxLayout="column" fxFlex>
-      <h1>Purchase Order #{{ poDetails[0]?.poNumber }}</h1>
+      <h1>Purchase Order #{{ details.poNumber }}</h1>
       <div fxLayout="row" class="po-sub-details">
-        <span><b>PO Date: </b> {{ poDetails[0]?.poDate }}</span>
+        <span><b>PO Date: </b> {{ details.poDate }}</span>
         <span>|</span> 
-        <span><b>Payment Terms: </b> {{ poDetails[0]?.poTerms }}</span>
+        <span><b>Payment Terms: </b> {{ details.poTerms }}</span>
         <!-- <span>Acknowledged</span> -->
       </div>
     </div>
     <div fxLayout="column" fxFlex>
       <span fxLayoutAlign="end">
-        <button mat-button [matMenuTriggerFor]="menu" class="language-select">{{ poDetails[0]?.language }} <mat-icon>language</mat-icon></button>
+        <button mat-button [matMenuTriggerFor]="menu" class="language-select">{{ details.language }} <mat-icon>language</mat-icon></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Other languages...</button>
         </mat-menu>
         <mat-icon class="info"
           #tooltip="matTooltip"
-          matTooltip="Date Format: {{ poDetails[0]?.dateFormat }}&#13;Time Format: {{ poDetails[0]?.timeFormat }}&#13;Number Format: {{ poDetails[0]?.numberFormat }}"
+          matTooltip="Date Format: {{ details.dateFormat }}&#13;Time Format: {{ details.timeFormat }}&#13;Number Format: {{ details.numberFormat }}"
           matTooltipClass="multiline">
             info
           </mat-icon>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutGap="20px" class="vendor-wrap">
-    <div *ngFor="let vendor of poDetails[0]?.poVendor" fxLayout="column" fxFlex>
+    <div *ngFor="let vendor of details.poVendor" fxLayout="column" fxFlex>
       <h2>{{ vendor.vendorType }}:</h2>
       <p>
         <b>{{ vendor.vendorName }}</b><br/>

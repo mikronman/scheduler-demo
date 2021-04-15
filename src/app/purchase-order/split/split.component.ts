@@ -18,8 +18,7 @@ export class SplitComponent implements OnInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private dialogRef: MatDialogRef<SplitComponent>,
-    @Inject(MAT_DIALOG_DATA) data
-    ) { 
+    @Inject(MAT_DIALOG_DATA) data) { 
       this.line = data.line;
     }
 
@@ -41,13 +40,12 @@ export class SplitComponent implements OnInit {
       }
     }
 
-    test() {console.log('test')}
-
     ngOnInit(): void {
     }
-
+   
     save() {
-      this.dialogRef.close();
+      let splitFlag = true;
+      this.dialogRef.close(splitFlag);
     }
     close() {
         this.dialogRef.close();
