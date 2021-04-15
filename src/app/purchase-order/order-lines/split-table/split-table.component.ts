@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SplitTable } from '../../../_models/splitTable.model';
 import { SplitComponent } from '../../split/split.component';

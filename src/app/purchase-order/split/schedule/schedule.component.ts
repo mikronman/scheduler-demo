@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-schedule',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.scss']
 })
 export class ScheduleComponent implements OnInit {
+  
+  @Input() scheduleIndex: any;
+  @Output() delete: EventEmitter<any> = new EventEmitter;
 
   constructor() { }
-  
+
   ngOnInit(): void {
+    console.log(this.scheduleIndex);
   }
 
+  deleteSchedule(value: any) {
+    this.delete.emit(value);
+    console.log('deleting...')
+  }
 }

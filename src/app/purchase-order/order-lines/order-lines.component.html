@@ -13,7 +13,7 @@
             </span>
         </div>
     </div>
-    <div class="card-wrap" *ngFor="let line of orderLines">
+    <div class="card-wrap" *ngFor="let line of orderLines; let i = index">
         <mat-card>
             <mat-card-header>
                 <div fxLayout="row" class="header-row">
@@ -22,7 +22,7 @@
                     </div>
                     <div fxFlex="50">
                         <span fxLayoutAlign="end">
-                            <button class="add-schedule-btn" mat-stroked-button (click)="openSplitDialog()"><mat-icon class="split-icon"> call_split</mat-icon> Add Schedule</button>
+                            <button class="add-schedule-btn" mat-stroked-button (click)="openSplitDialog(i)"><mat-icon class="split-icon"> call_split</mat-icon> Add Schedule</button>
                             <mat-button-toggle-group #group="matButtonToggleGroup">
                                 <mat-button-toggle class="accept" value="accept">Accept</mat-button-toggle>
                                 <mat-button-toggle class="reject" value="reject">Reject</mat-button-toggle>
@@ -122,7 +122,7 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <app-split-table *ngIf="group.value === 'change'"></app-split-table>
+                        <app-split-table *ngIf="group.value === 'change' && splitSchedule !== true"></app-split-table>
                         <div class="alerts">
                             <div *ngIf="group.value === 'accept'" class="accept-alert"><mat-icon>warning</mat-icon> Once you click submit below, your Buyer will receive your order confirmation.</div>
                             <div *ngIf="group.value === 'reject'" class="reject-alert"><mat-icon>warning</mat-icon> Once you click submit below, your Buyer will receive your rejection.</div>

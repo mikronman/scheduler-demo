@@ -17,6 +17,7 @@ import { GetLineAction } from 'src/app/store/actions/order-line.action';
 export class OrderLinesComponent implements OnInit {
 
   orderLines: OrderLine;
+  splitSchedule = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   lines$: Observable<OrderLine[]>;
@@ -25,11 +26,14 @@ export class OrderLinesComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private lineService: LineService, private store: Store<AppState>) {}
 
-  openSplitDialog() {
+  openSplitDialog(i) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      line: this.orderLines[i],
+    }
 
     this.dialog.open(SplitComponent, dialogConfig);
   }
@@ -37,6 +41,7 @@ export class OrderLinesComponent implements OnInit {
   ngOnInit(): void {
     this.lineService.getLines().pipe(takeUntil(this.destroy$)).subscribe((data: OrderLine) => {
       this.orderLines = data;
+      console.log(this.orderLines);
     })
     // this.lines$ = this.store.select(store => store.line.orderLines);
     // this.error$ = this.store.select(store => store.line.error);

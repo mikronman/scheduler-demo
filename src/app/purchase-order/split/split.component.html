@@ -1,18 +1,21 @@
-<h1 mat-dialog-title>Split Line {{ splitLine[0].lineNumber }}: {{ splitLine[0].lineTitle }}</h1>
+<h1 mat-dialog-title>Split Line {{ line.lineNumber }}: {{ line.lineTitle }}</h1>
 <div mat-dialog-content>
     <p><b>Requested</b></p>
     <p>
-        Quantity: {{ splitLine[0].requestedQuantity }} {{ splitLine[0].unitType }}<br/>
-        Expected Arrival Date: {{ splitLine[0].arrivalDate }}
+        Quantity: {{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}<br/>
+        Expected Arrival Date: {{ line.arrivalDate[0].requested }}
     </p>
-    <app-schedule></app-schedule>
-    <app-schedule></app-schedule>
-    <app-schedule></app-schedule>
-    <app-schedule *ngFor="let schedule of schedules" [schedule]="schedule"></app-schedule>
-    <button mat-stroked-button class="add-schedule-btn" (click)="addSchedule()">Add Schedule</button>
+    <div fxLayout="column">
+        <div>
+            <ng-template #scheduleContainer>
+                <app-schedule [scheduleIndex]="scheduleIndex" (delete)="test($event)"></app-schedule>
+            </ng-template>
+        </div>
+    </div>
+    <button mat-stroked-button class="add-schedule-btn" (click)="addScheduleComponent(scheduleComponentClass)">Add Schedule</button>
     <div class="counter-container">
-        <span class="total"><b>Total: </b> {{ splitLine[0].requestedQuantity }} {{ splitLine[0].unitType }}</span>
-        <span class="remaining"><b>Remaining: {{ splitLine[0].requestedQuantity }} {{ splitLine[0].unitType }}</b></span>
+        <span class="total"><b>Total: </b> {{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}</span>
+        <span class="remaining"><b>Remaining: {{ line.quantity[0].ordered }} {{ line.quantity[0].unitType }}</b></span>
     </div>
 </div>
 <div mat-dialog-actions align="end">

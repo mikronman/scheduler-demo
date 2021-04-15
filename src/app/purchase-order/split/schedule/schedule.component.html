@@ -3,8 +3,8 @@
         <div fxFlex>
             <p><b>Schedule</b></p>
         </div>
-        <div fxFlex fxLayoutAlign="end">
-            <mat-icon>delete</mat-icon>
+        <div fxFlex class="delete" fxLayoutAlign="end">
+            <mat-icon (click)="deleteSchedule('value')">delete</mat-icon>
         </div>
     </div>
     <div fxLayout="row" fxLayoutGap="12px">

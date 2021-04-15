@@ -410,6 +410,9 @@ app-split {
     padding:14px 18px;
     border-radius:4px;
     margin-bottom:15px;
+    .delete mat-icon {
+      cursor:pointer;
+    }
   }
   .add-schedule-btn {
     color:$dark-blue;
